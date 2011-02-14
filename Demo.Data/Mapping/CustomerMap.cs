@@ -8,6 +8,7 @@ namespace Demo.Data.Mapping
         {
             Map(x => x.FirstName);
             Map(x => x.LastName);
+            Map(x => x.Type);//.CustomType<CustomerType>().Not.Nullable();
 
             HasMany(x => x.Orders);
         }

@@ -8,10 +8,16 @@ namespace Demo.Domain
     {
         public virtual Customer Customer { get; set; }
         public virtual IList<ProductInOrder> Products { get; set; }
+        public virtual OrderDeliveryStatus? DeliveryStatus { get; set; }
 
         public virtual decimal Total
         {
             get { return Products.Sum(x => x.Product.Price * x.Quantity); }
         }
+    }
+
+    public enum OrderDeliveryStatus
+    {
+        Shipped = 0, Received = 1,
     }
 }

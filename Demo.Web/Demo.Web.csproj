@@ -37,7 +37,7 @@
       <HintPath>..\Lib\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="HibernatingRhinos.Profiler.Appender">
-      <HintPath>..\..\..\tools\NHibernate.Profiler\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+      <HintPath>..\..\..\tools\NHProf\HibernatingRhinos.Profiler.Appender.dll</HintPath>
     </Reference>
     <Reference Include="MvcContrib">
       <HintPath>..\Lib\MVCContrib\MvcContrib.dll</HintPath>

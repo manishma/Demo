@@ -7,6 +7,7 @@ namespace Demo.Data.Mapping
         public OrderMap()
         {
             References(x => x.Customer);
+            Map(x => x.DeliveryStatus);//.CustomType<OrderDeliveryStatus>();
             HasMany(x => x.Products);
         }
     }

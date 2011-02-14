@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<p>
+<%: Html.ActionLink("Customers", "Index", "Customers") %>
+</p>
+
+<h1>Products</h1>
+
 <%: Html.Grid(Model).Columns(c =>
                                                     {
                                                         c.For(x => x.Id);

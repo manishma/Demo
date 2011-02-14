@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conventions\EnumConvention.cs" />
     <Compile Include="Conventions\HasManyConvention.cs" />
     <Compile Include="Conventions\HasManyToManyConvention.cs" />
     <Compile Include="Conventions\ManyToManyTableNameConvention.cs" />

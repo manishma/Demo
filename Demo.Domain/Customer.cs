@@ -7,6 +7,7 @@ namespace Demo.Domain
     {
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
+        public virtual CustomerType Type { get; set; }
 
         public virtual IList<Order> Orders { get; set; }
 
@@ -14,5 +15,10 @@ namespace Demo.Domain
         {
             return FirstName + " " + LastName;
         }
+    }
+
+    public enum CustomerType
+    {
+        Private = 0, Business = 1
     }
 }

@@ -23,11 +23,13 @@ alter table ProductInOrders  drop constraint Fk_ProductInOrder_Order
         Id INT IDENTITY NOT NULL,
        FirstName NVARCHAR(255) null,
        LastName NVARCHAR(255) null,
+       Type INT not null,
        primary key (Id)
     )
 
     create table Orders (
         Id INT IDENTITY NOT NULL,
+       DeliveryStatus INT null,
        CustomerId INT null,
        primary key (Id)
     )
