@@ -1,0 +1,13 @@
+
+_ReSharper.Demo*
+*.user
+Demo.Data.Test/bin/Debug/*
+Demo.Data.Test/obj/Debug/*
+Demo.Data/bin/Debug/*
+Demo.Data/obj/Debug/*
+Demo.Domain/bin/Debug/*
+Demo.Domain/obj/Debug/*
+Demo.suo
+Demo.Web/obj/Debug/*
+Demo.Web/bin/Debug/*
+Demo.Web/bin/*
