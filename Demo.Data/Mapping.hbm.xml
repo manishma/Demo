@@ -1,0 +1,69 @@
+﻿<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-access="property" auto-import="true" default-cascade="none" default-lazy="true">
+	<class name="Demo.Domain.Customer, Demo.Domain" table="Customers" mutable="true">
+		<id name="Id" unsaved-value="0">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+		<bag name="Orders" mutable="true">
+			<key foreign-key="Fk_Order_Customer">
+				<column name="CustomerId" />
+			</key>
+			<one-to-many class="Demo.Domain.Order, Demo.Domain" />
+		</bag>
+		<property name="FirstName">
+			<column name="FirstName" />
+		</property>
+		<property name="LastName">
+			<column name="LastName" />
+		</property>
+		<property name="Type">
+			<column name="Type" not-null="true" />
+		</property>
+	</class>
+
+	<class name="Demo.Domain.Order, Demo.Domain" table="Orders" mutable="true">
+		<id name="Id" unsaved-value="0">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+		<bag name="Products" mutable="true">
+			<key foreign-key="Fk_ProductInOrder_Order">
+				<column name="OrderId" />
+			</key>
+			<one-to-many class="Demo.Domain.ProductInOrder, Demo.Domain" />
+		</bag>
+		<property name="DeliveryStatus">
+			<column name="DeliveryStatus" not-null="false" />
+		</property>
+		<many-to-one name="Customer" class="Demo.Domain.Customer, Demo.Domain" fetch="join" foreign-key="Fk_Order_Customer">
+			<column name="CustomerId" />
+		</many-to-one>
+	</class>
+	
+	<class name="Demo.Domain.ProductInOrder, Demo.Domain" table="ProductInOrders" mutable="true">
+		<id name="Id" unsaved-value="0">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+		<property name="Quantity">
+			<column name="Quantity" />
+		</property>
+		<many-to-one name="Product" class="Demo.Domain.Product, Demo.Domain" fetch="join" foreign-key="Fk_ProductInOrder_Product">
+			<column name="ProductId" />
+		</many-to-one>
+	</class>
+
+	<class name="Demo.Domain.Product, Demo.Domain" table="Products" mutable="true">
+		<id name="Id" unsaved-value="0">
+			<column name="Id" />
+			<generator class="identity" />
+		</id>
+		<property name="Name">
+			<column name="Name" />
+		</property>
+		<property name="Price">
+			<column name="Price" />
+		</property>
+	</class>
+
+</hibernate-mapping>

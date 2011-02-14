@@ -48,16 +48,24 @@ namespace Demo.Data
                         MsSqlCeConfiguration.Standard.ConnectionString(s => s.FromConnectionStringWithKey("DemoDB")))
                     .Mappings(x =>
                                   {
-                                      var fm = x.FluentMappings;
+                                      if (false)
+                                      {
+                                          var fm = x.FluentMappings;
 
-                                      fm
-                                          .AddFromAssemblyOf<SessionManager>()
-                                          .Conventions.AddFromAssemblyOf<SessionManager>();
+                                          fm
+                                              .AddFromAssemblyOf<SessionManager>()
+                                              .Conventions.AddFromAssemblyOf<SessionManager>();
 
-                                      var dir = ConfigurationManager.AppSettings["xmlMappingOutputDirectory"];
+                                          var dir = ConfigurationManager.AppSettings["xmlMappingOutputDirectory"];
 
-                                      if (!String.IsNullOrEmpty(dir))
-                                          fm.ExportTo(dir);
+                                          if (!String.IsNullOrEmpty(dir))
+                                              fm.ExportTo(dir);
+                                      }
+                                      else
+                                      {
+                                          x.HbmMappings.AddFromAssemblyOf<SessionManager>();
+
+                                      }
                                   })
                     // This line tells nhibernate to store the session in the HttpContext object of each web request
                     .ExposeConfiguration(c => c.SetProperty("current_session_context_class", "managed_web"))
