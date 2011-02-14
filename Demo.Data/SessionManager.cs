@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
-using NHibernate.Cfg;
+using Configuration = NHibernate.Cfg.Configuration;
 
 namespace Demo.Data
 {
@@ -45,9 +46,19 @@ namespace Demo.Data
                 Fluently.Configure()
                     .Database(
                         MsSqlCeConfiguration.Standard.ConnectionString(s => s.FromConnectionStringWithKey("DemoDB")))
-                    .Mappings(x => x
-                                       .FluentMappings.AddFromAssemblyOf<SessionManager>()
-                                       .Conventions.AddFromAssemblyOf<SessionManager>())
+                    .Mappings(x =>
+                                  {
+                                      var fm = x.FluentMappings;
+
+                                      fm
+                                          .AddFromAssemblyOf<SessionManager>()
+                                          .Conventions.AddFromAssemblyOf<SessionManager>();
+
+                                      var dir = ConfigurationManager.AppSettings["xmlMappingOutputDirectory"];
+
+                                      if (!String.IsNullOrEmpty(dir))
+                                          fm.ExportTo(dir);
+                                  })
                     // This line tells nhibernate to store the session in the HttpContext object of each web request
                     .ExposeConfiguration(c => c.SetProperty("current_session_context_class", "managed_web"))
                     .ExposeConfiguration(c => { configuration = c; })
