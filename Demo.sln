@@ -9,6 +9,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Data.Test", "Demo.Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Web", "Demo.Web\Demo.Web.csproj", "{13FAE2B3-CFB3-44BB-8441-294896F257E2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gen", "Gen", "{6585B736-7F95-486F-BD86-7DE1DF9BFCD6}"
+	ProjectSection(SolutionItems) = preProject
+		Gen\DataBase.sql = Gen\DataBase.sql
+		Gen\Demo.Domain.Customer.hbm.xml = Gen\Demo.Domain.Customer.hbm.xml
+		Gen\Demo.Domain.Order.hbm.xml = Gen\Demo.Domain.Order.hbm.xml
+		Gen\Demo.Domain.Product.hbm.xml = Gen\Demo.Domain.Product.hbm.xml
+		Gen\Demo.Domain.ProductInOrder.hbm.xml = Gen\Demo.Domain.ProductInOrder.hbm.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{DC504954-4776-4876-AF4D-AF576ABD8624}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\nhibernate-configuration.xsd = Lib\nhibernate-configuration.xsd
+		Lib\nhibernate-mapping.xsd = Lib\nhibernate-mapping.xsd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
