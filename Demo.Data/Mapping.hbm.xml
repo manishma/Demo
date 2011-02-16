@@ -21,6 +21,16 @@
 		</property>
 	</class>
 
+	<class name="Demo.Domain.EntityWithComplexId, Demo.Domain" table="EntityWithComplexIds" mutable="true">
+		<composite-id name="Id" mapped="true" unsaved-value="undefined">
+			<key-property name="Id1" />
+			<key-property name="Id2" />
+			<key-property name="Id3" />
+		</composite-id>
+		<property name="Property1" />
+		<property name="Property2" />
+	</class>
+
 	<class name="Demo.Domain.Order, Demo.Domain" table="Orders" mutable="true">
 		<id name="Id" unsaved-value="0">
 			<column name="Id" />

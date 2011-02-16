@@ -13,6 +13,8 @@ alter table ProductInOrders  drop constraint Fk_ProductInOrder_Order
 
     drop table Customers
 
+    drop table EntityWithComplexIds
+
     drop table Orders
 
     drop table ProductInOrders
@@ -25,6 +27,15 @@ alter table ProductInOrders  drop constraint Fk_ProductInOrder_Order
        LastName NVARCHAR(255) null,
        Type INT not null,
        primary key (Id)
+    )
+
+    create table EntityWithComplexIds (
+        Id1 NVARCHAR(255) not null,
+       Id2 UNIQUEIDENTIFIER not null,
+       Id3 INT not null,
+       Property1 NVARCHAR(255) null,
+       Property2 NVARCHAR(255) null,
+       primary key (Id1, Id2, Id3)
     )
 
     create table Orders (

@@ -59,6 +59,7 @@
     <Compile Include="Conventions\TableNameConvention.cs" />
     <Compile Include="Mapping\CustomerMap.cs" />
     <Compile Include="Mapping\EntityMap.cs" />
+    <Compile Include="Mapping\EntityWithComplexIdMap.cs" />
     <Compile Include="Mapping\OrderMap.cs" />
     <Compile Include="Mapping\ProductInOrderMap.cs" />
     <Compile Include="Mapping\ProductMap.cs" />
