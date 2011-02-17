@@ -48,7 +48,7 @@ namespace Demo.Data
                         MsSqlCeConfiguration.Standard.ConnectionString(s => s.FromConnectionStringWithKey("DemoDB")))
                     .Mappings(x =>
                                   {
-                                      if (false)
+                                      if (true)
                                       {
                                           var fm = x.FluentMappings;
 

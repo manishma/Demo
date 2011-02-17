@@ -11,6 +11,10 @@ alter table ProductInOrders  drop constraint Fk_ProductInOrder_Product
 alter table ProductInOrders  drop constraint Fk_ProductInOrder_Order
 
 
+    
+alter table ProductMetadata  drop constraint Fk_ProductMetadata_Product
+
+
     drop table Customers
 
     drop table EntityWithComplexIds
@@ -20,6 +24,8 @@ alter table ProductInOrders  drop constraint Fk_ProductInOrder_Order
     drop table ProductInOrders
 
     drop table Products
+
+    drop table ProductMetadata
 
     create table Customers (
         Id INT IDENTITY NOT NULL,
@@ -60,6 +66,14 @@ alter table ProductInOrders  drop constraint Fk_ProductInOrder_Order
        primary key (Id)
     )
 
+    create table ProductMetadata (
+        ProductId INT not null,
+       Name NVARCHAR(255) null,
+       Description NVARCHAR(255) null,
+       Locale NVARCHAR(255) not null,
+       primary key (ProductId, Locale)
+    )
+
     alter table Orders 
         add constraint Fk_Order_Customer 
         foreign key (CustomerId) 
@@ -74,3 +88,8 @@ alter table ProductInOrders  drop constraint Fk_ProductInOrder_Order
         add constraint Fk_ProductInOrder_Order 
         foreign key (OrderId) 
         references Orders
+
+    alter table ProductMetadata 
+        add constraint Fk_ProductMetadata_Product 
+        foreign key (ProductId) 
+        references Products

@@ -68,6 +68,18 @@
 			<column name="Id" />
 			<generator class="identity" />
 		</id>
+		<map name="Metadata" mutable="true">
+			<key>
+				<column name="ProductId" />
+			</key>
+			<index>
+				<column name="Locale" />
+			</index>
+			<composite-element class="Demo.Domain.ProductMetadata, Demo.Domain">
+				<property name="Name" />
+				<property name="Description"/>
+			</composite-element>
+		</map>
 		<property name="Name">
 			<column name="Name" />
 		</property>
