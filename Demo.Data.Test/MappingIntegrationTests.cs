@@ -65,9 +65,10 @@ namespace Demo.Data.Test
                 var product = new Product
                 {
                     Name = "Laptop",
+                    Price = 5000,
                     Metadata = new Dictionary<string, ProductMetadata>
                                                  {
-                                                     {"he", new ProductMetadata
+                                                     {"en", new ProductMetadata
                                                                 {
                                                                     Name = "Fuji",
                                                                     Description = "Hi performance laptop",
@@ -88,6 +89,23 @@ namespace Demo.Data.Test
                                    };
 
                 session.Save(customer);
+                session.Flush();
+
+
+                var order = new Order
+                                {
+                                    Customer = customer,
+                                    Products = new List<ProductInOrder>
+                                                   {
+                                                       new ProductInOrder
+                                                           {
+                                                               Product = product,
+                                                               Quantity = 2,
+                                                           }
+                                                   }
+                                };
+
+                session.Save(order);
                 session.Flush();
 
                 trans.Commit();
