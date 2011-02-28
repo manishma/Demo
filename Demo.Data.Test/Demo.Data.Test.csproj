@@ -69,6 +69,7 @@
     <Compile Include="EntityWithComplexIdTests.cs" />
     <Compile Include="MappingIntegrationTests.cs" />
     <Compile Include="OrderTests.cs" />
+    <Compile Include="ProductTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RollbackTests.cs" />
   </ItemGroup>

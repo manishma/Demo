@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using Demo.Domain;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
@@ -45,15 +47,50 @@ namespace Demo.Data.Test
         /// Generates and outputs the database schema SQL to the console
         /// </summary>
         [Test]
-        public void GenerateDatabaseSchema()
+        public void RecreateDataBase()
         {
             using (var session = SessionManager.SessionFactory.OpenSession())
             {
                 using (TextWriter stringWriter = new StreamWriter("../../../Gen/DataBase.sql"))
                 {
-                    new SchemaExport(SessionManager.Configuration).Execute(true, false, false, session.Connection,
+                    new SchemaExport(SessionManager.Configuration).Execute(true, true, false, session.Connection,
                                                                            stringWriter);
                 }
+            }
+
+            using (var session = SessionManager.SessionFactory.OpenSession())
+            using (var trans = session.BeginTransaction())
+            {
+                // create initial data
+                var product = new Product
+                {
+                    Name = "Laptop",
+                    Metadata = new Dictionary<string, ProductMetadata>
+                                                 {
+                                                     {"he", new ProductMetadata
+                                                                {
+                                                                    Name = "Fuji",
+                                                                    Description = "Hi performance laptop",
+                                                                }}
+                                                 }
+                };
+
+                session.Save(product);
+                session.Flush();
+
+
+                var customer = new Customer
+                                   {
+                                       FirstName = "Joe",
+                                       LastName = "Smith",
+                                       Type = CustomerType.Private,
+                                       Orders = new List<Order>(),
+                                   };
+
+                session.Save(customer);
+                session.Flush();
+
+                trans.Commit();
             }
         }
 

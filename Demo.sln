@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gen", "Gen", "{6585B736-7F9
 	ProjectSection(SolutionItems) = preProject
 		Gen\DataBase.sql = Gen\DataBase.sql
 		Gen\Demo.Domain.Customer.hbm.xml = Gen\Demo.Domain.Customer.hbm.xml
+		Gen\Demo.Domain.EntityWithComplexId.hbm.xml = Gen\Demo.Domain.EntityWithComplexId.hbm.xml
 		Gen\Demo.Domain.Order.hbm.xml = Gen\Demo.Domain.Order.hbm.xml
 		Gen\Demo.Domain.Product.hbm.xml = Gen\Demo.Domain.Product.hbm.xml
 		Gen\Demo.Domain.ProductInOrder.hbm.xml = Gen\Demo.Domain.ProductInOrder.hbm.xml

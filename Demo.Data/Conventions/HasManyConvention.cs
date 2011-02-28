@@ -9,6 +9,7 @@ namespace B2BProductCatalog.Data.NHibernateMaps.Conventions
         {
             instance.Key.Column(instance.EntityType.Name + "Id");
             instance.Key.ForeignKey("Fk_"+ instance.ChildType.Name + "_" + instance.EntityType.Name);
+            instance.Cascade.AllDeleteOrphan();
         }
     }
 }
